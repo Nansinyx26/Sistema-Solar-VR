@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+    <script>
+      AFRAME.registerComponent("markerhandler", {
+        init: function () {
+          this.el.sceneEl.addEventListener("markerFound", () => {
+            // Exibe os nomes do planeta  quando o marcador é encontrado
+            const planets = document.querySelectorAll("a-sphere");
+            planets.forEach((planet) => {
+              planet.setAttribute("visible", "true");
+            });
+          });
+
+          this.el.sceneEl.addEventListener("markerLost", () => {
+            // Oculta os nomes dos planetas quando o marcador é perdido
+            const planets = document.querySelectorAll("a-sphere");
+            planets.forEach((planet) => {
+              planet.setAttribute("visible", "false");
+            });
+          });
+        },
+      });
+
+      function verificarRespostas() {
+        // Obtém as respostas do usuário
+        const respostaSol = document.getElementById("respostaSol").value;
+        const respostaMercurio =
+          document.getElementById("respostaMercurio").value;
+        const respostaVenus = document.getElementById("respostaVenus").value;
+        const respostaTerra = document.getElementById("respostaTerra").value;
+        const respostaMarte = document.getElementById("respostaMarte").value;
+        const respostaJupiter =
+          document.getElementById("respostaJupiter").value;
+        const respostaSaturno =
+          document.getElementById("respostaSaturno").value;
+
+        // Define as respostas corretas
+        const respostaCorretaSol = "Sol";
+        const respostaCorretaMercurio = "Mercurio";
+        const respostaCorretaVenus = "Venus";
+        const respostaCorretaTerra = "Terra";
+        const respostaCorretaMarte = "Marte";
+        const respostaCorretaJupiter = "Jupiter";
+        const respostaCorretaSaturno = "Saturno";
+
+        // Verifica as respostas e exibe um alerta com o resultado
+        let corretas = 0;
+        let erradas = 0;
+
+        if (respostaSol === respostaCorretaSol) {
+          corretas++;
+        } else {
+          erradas++;
+        }
+
+        if (respostaMercurio === respostaCorretaMercurio) {
+          corretas++;
+        } else {
+          erradas++;
+        }
+
+        if (respostaVenus === respostaCorretaVenus) {
+          corretas++;
+        } else {
+          erradas++;
+        }
+
+        if (respostaTerra === respostaCorretaTerra) {
+          corretas++;
+        } else {
+          erradas++;
+        }
+
+        if (respostaMarte === respostaCorretaMarte) {
+          corretas++;
+        } else {
+          erradas++;
+        }
+
+        if (respostaJupiter === respostaCorretaJupiter) {
+          corretas++;
+        } else {
+          erradas++;
+        }
+
+        if (respostaSaturno === respostaCorretaSaturno) {
+          corretas++;
+        } else {
+          erradas++;
+        }
+
+        alert(`Respostas corretas: ${corretas}\nRespostas erradas: ${erradas}`);
+
+        // Redirecionar para a página 2
+        window.location.href = "pagina2.html";
+      }
+    </script>
+  </head>
+  <body style="margin: 0; overflow: hidden">
+    <a-scene embedded arjs="sourceType: webcam;">
+      <a-assets>
+        <img id="marker" src="marker.jpg" />
+      </a-assets>
+
+      <a-marker type="pattern" url="marker.patt" markerhandler>
+        <a-sphere
+          position="0 0.5 0"
+          radius="0.5"
+          color="yellow"
+          visible="false"
+        ></a-sphere>
+        <a-sphere
+          position="1.5 0.5 0"
+          radius="0.5"
+          color="grey"
+          visible="false"
+        ></a-sphere>
+        <a-sphere
+          position="3 0.5 0"
+          radius="0.5"
+          color="blue"
+          visible="false"
+        ></a-sphere>
+        <a-sphere
+          position="-1.5 0.5 0"
+          radius="0.5"
+          color="red"
+          visible="false"
+        ></a-sphere>
+        <a-sphere
+          position="-3 0.5 0"
+          radius="0.5"
+          color="orange"
+          visible="false"
+        ></a-sphere>
+        <a-sphere
+          position="-4.5 0.5 0"
+          radius="0.5"
+          color="brown"
+          visible="false"
+        ></a-sphere>
+        <a-sphere
+          position="6 0.5 0"
+          radius="0.5"
+          color="pink"
+          visible="false"
+        ></a-sphere>
+
+        <a-camera-static></a-camera-static>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <div style="position: absolute; top: 10px; left: 10px">
+      Qual o nome da estrela do nosso sistema ?
+      <input
+        type="text"
+        id="respostaSol"
+        placeholder="Resposta "
+        style="width: 100%; padding: 5px; margin-bottom: 5px"
+      />
+      Qual o nome do nosso primeiro planeta do Sistema?
+      <input
+        type="text"
+        id="respostaMercurio"
+        placeholder="Resposta "
+        style="width: 100%; padding: 5px; margin-bottom: 5px"
+      />
+      Qual o nome do nosso segundo planeta do Sistema?
+      <input
+        type="text"
+        id="respostaVenus"
+        placeholder="Resposta "
+        style="width: 100%; padding: 5px; margin-bottom: 5px"
+      />
+      Qual o nome do nosso terceiro planeta do Sistema?
+      <input
+        type="text"
+        id="respostaTerra"
+        placeholder="Resposta "
+        style="width: 100%; padding: 5px; margin-bottom: 5px"
+      />
+      Qual o nome do nosso quarto planeta do Sistema?
+      <input
+        type="text"
+        id="respostaMarte"
+        placeholder="Resposta "
+        style="width: 100%; padding: 5px; margin-bottom: 5px"
+      />
+      Qual o nome do nosso quinto planeta do Sistema?
+      <input
+        type="text"
+        id="respostaJupiter"
+        placeholder="Resposta "
+        style="width: 100%; padding: 5px; margin-bottom: 5px"
+      />
+      Qual o nome do nosso sexto planeta do Sistema?
+      <input
+        type="text"
+        id="respostaSaturno"
+        placeholder="Resposta "
+        style="width: 100%; padding: 5px; margin-bottom: 5px"
+      />
+
+      <button onclick="verificarRespostas()" style="width: 100%; padding: 5px">
+        Verificar Respostas
+      </button>
+
+      <button
+        onclick="window.location.href = 'pagina2.html'"
+        style="width: 100%; padding: 5px"
+      >
+        Ir para Página 2
+      </button>
+    </div>
+  </body>
+</html>
