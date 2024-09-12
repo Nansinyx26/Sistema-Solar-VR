@@ -1,4 +1,4 @@
-Link dele feito no Glitch : https://glitch.com/edit/#!/sistema-solar-nan-oliveira
+
 
 Quiz do Sistema Solar em Realidade Virtual
 Descrição:
