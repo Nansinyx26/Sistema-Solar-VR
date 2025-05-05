@@ -44,5 +44,7 @@ Perguntas: Modifique as perguntas do quiz e suas respostas corretas.
 Marcador: Crie um novo marcador visual com um design personalizado.
 Desenvolvido em momento academico pelo Dev Renan de Oliveira Farias, em 27 horas diretas.
 
+Controles: W para aproximar e S para Afastar 
+
 
 
